@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niti Advisory Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#1a7a6e;--teal-light:#22a090;--teal-pale:rgba(26,122,110,0.08);--black:#111110;--off-white:#f5f3ee;--white:#ffffff;--gray:#6b6b68;--light-gray:#e8e6e1;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--off-white);color:var(--black);overflow-x:hidden}
+.page-wrapper{animation:pageEnter 0.65s cubic-bezier(0.16,1,0.3,1) both}
+@keyframes pageEnter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pageExit{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-12px)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:64px;background:rgba(245,243,238,0.92);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--light-gray)}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo-image{width:150px;height:50px;object-fit:contain;object-position:left center;display:block}
+.nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:400;color:var(--gray);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s}
+.nav-links a:hover{color:var(--black)}
+.nav-links .btn-nav{background:var(--black);color:#fff;padding:0.45rem 1.1rem;border-radius:100px;font-size:0.78rem;font-weight:500;transition:background 0.25s}
+.nav-links .btn-nav:hover{background:var(--teal)}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;padding-bottom:6rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('WhatsApp Image 2026-09-04 at 23.28.34.jpeg') center/cover no-repeat;filter:brightness(0.38);transform:scale(1.04);animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.10)}}
+.hero-content{position:relative;z-index:2;padding:0 3rem;max-width:700px}
+.hero-content h1{font-family:var(--serif);font-size:clamp(3rem,7vw,5.5rem);font-weight:400;color:#fff;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.2rem}
+.hero-content h1 span{color:var(--teal-light)}
+.hero-content p{font-size:0.95rem;color:rgba(255,255,255,0.65);line-height:1.7;max-width:400px;margin-bottom:2rem}
+.signature{opacity:0.6}
+.hero-scroll-hint{position:absolute;bottom:2rem;right:3rem;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent)}
+
+/* INTRO */
+#intro{background:var(--white);padding:6rem 3rem;text-align:center}
+.section-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gray);margin-bottom:1.5rem}
+#intro h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;max-width:720px;margin:0 auto 4rem;line-height:1.3;letter-spacing:-0.01em}
+.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:900px;margin:0 auto}
+.intro-card{padding:2rem 1.5rem;border:0.5px solid var(--light-gray);border-radius:4px;text-align:center;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;text-decoration:none;color:inherit;display:block;cursor:pointer}
+.intro-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,122,110,0.1)}
+.intro-icon{width:48px;height:48px;margin:0 auto 1.2rem;border:1px solid var(--light-gray);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,background 0.25s}
+.intro-card:hover .intro-icon{border-color:var(--teal);background:var(--teal-pale)}
+.intro-icon svg{width:24px;height:24px;stroke:var(--black);fill:none;stroke-width:1.5}
+.intro-card h3{font-size:0.95rem;font-weight:500;margin-bottom:0.75rem}
+.intro-card p{font-size:0.82rem;color:var(--gray);line-height:1.6;margin-bottom:1.5rem}
+.btn-outline{display:inline-block;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);border:1px solid var(--black);padding:0.5rem 1.3rem;border-radius:100px;text-decoration:none;transition:all 0.25s;cursor:pointer;background:transparent;font-family:var(--sans)}
+.btn-outline:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ABOUT / ACCORDION */
+#corporate{padding:6rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
+#corporate h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.about-heading{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.5rem}
+.about-heading h2{margin-bottom:0}
+.about-heading-logo{width:105px;height:76px;object-fit:contain;display:block;flex-shrink:0}
+#corporate>div>p{font-size:0.9rem;color:var(--gray);line-height:1.7;margin-bottom:2.5rem}
+.accordion-item{border-bottom:0.5px solid var(--light-gray)}
+.accordion-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;background:none;border:none;font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--black);cursor:pointer;text-align:left;transition:color 0.2s}
+.accordion-trigger:hover{color:var(--teal)}
+.accordion-plus{font-size:1.2rem;color:var(--gray);transition:transform 0.25s,color 0.2s;flex-shrink:0}
+.accordion-item.open .accordion-plus{transform:rotate(45deg);color:var(--teal)}
+.accordion-body{font-size:0.85rem;color:var(--gray);line-height:1.75;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s}
+.accordion-item.open .accordion-body{max-height:600px;padding-bottom:1rem}
+.corporate-img{width:100%;height:540px;object-fit:cover;border-radius:2px}
+
+/* APPROACH */
+#agency{background:var(--white);display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+.agency-img{width:100%;height:100%;min-height:400px;object-fit:cover;display:block}
+.agency-content{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.agency-content h2{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;line-height:1.2;letter-spacing:-0.01em;margin-bottom:1.2rem}
+.agency-content p{font-size:0.88rem;color:var(--gray);line-height:1.75;margin-bottom:2rem}
+.btn-group{display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-dark{display:inline-block;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--black);border:1px solid var(--black);padding:0.55rem 1.4rem;border-radius:100px;text-decoration:none;transition:all 0.25s;cursor:pointer;font-family:var(--sans)}
+.btn-dark:hover{background:var(--teal);border-color:var(--teal)}
+.contact-line{display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--gray)}
+.contact-line a{color:var(--teal);text-decoration:none;font-weight:500}
+.contact-line a:hover{color:var(--black)}
+
+/* OUR WORK */
+#solutions{padding:6rem 3rem;display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto}
+#solutions h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem}
+#solutions>div>p{font-size:0.88rem;color:var(--gray);line-height:1.7;margin-bottom:2rem}
+.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem}
+.solutions-grid img{width:100%;height:260px;object-fit:cover;border-radius:2px;display:block}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,0.45);padding:3.5rem 3rem 2rem}
+.footer-inner{max-width:960px;margin:0 auto}
+.footer-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:0.5px solid rgba(255,255,255,0.1)}
+.footer-section h4{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.8rem}
+.footer-section p{font-size:0.72rem;line-height:1.8;color:rgba(255,255,255,0.35);margin-bottom:0.5rem}
+.footer-bottom{text-align:center;font-size:0.72rem;letter-spacing:0.05em;padding-top:1rem}
+.footer-bottom span{color:var(--teal-light)}
+.fade-in{opacity:0;transform:translateY(28px);transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1)}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .intro-grid{grid-template-columns:repeat(2,1fr)}
+  #corporate,#solutions{grid-template-columns:1fr}
+  #agency{grid-template-columns:1fr}
+  nav{padding:0 1.5rem}
+  .nav-links{gap:1rem}
+  .nav-links li:nth-child(n+4){display:none}
+}
+
+/* Readability and warm compass-banner refinement */
+.nav-links a{font-size:0.9rem}
+.nav-links .btn-nav{font-size:0.86rem}
+.hero-content p{font-size:1.08rem;color:#385b56;max-width:440px}
+.hero-scroll-hint{font-size:0.78rem;color:#526b66}
+.section-label{font-size:0.78rem}
+.intro-card h3{font-size:1.05rem}
+.intro-card p{font-size:0.94rem;line-height:1.7}
+.btn-outline,.btn-dark{font-size:0.8rem}
+#corporate>div>p,.agency-content p,#solutions>div>p{font-size:1rem;line-height:1.8}
+.accordion-trigger{font-size:1rem}
+.accordion-body{font-size:0.96rem;line-height:1.8}
+.contact-line{font-size:0.94rem}
+.footer-section h4{font-size:0.7rem}
+.footer-section p,.footer-bottom{font-size:0.82rem}
+#hero{background:#f3ead8}
+.hero-bg{background-position:right center;background-size:auto 100%;background-repeat:no-repeat;filter:none;transform:none;animation:none}
+#hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#f3ead8 0%,#f3ead8 35%,rgba(243,234,216,.97) 44%,rgba(243,234,216,.72) 54%,rgba(243,234,216,0) 68%);pointer-events:none}
+.hero-content h1{color:#163f3a;text-shadow:none}
+.hero-content h1 span{color:#a97b32}
+.scroll-line{background:linear-gradient(to bottom,rgba(22,63,58,.5),transparent)}
+@media(max-width:760px){
+  .hero-bg{background-position:68% center;background-size:auto 100%;opacity:.38}
+  #hero::after{background:linear-gradient(90deg,rgba(243,234,216,.98) 0%,rgba(243,234,216,.88) 58%,rgba(243,234,216,.38) 100%)}
+  .hero-content{padding:0 1.5rem}
+}
+
+/* Larger supporting copy across the site */
+.nav-links a{font-size:1.025rem}
+.nav-links .btn-nav{font-size:.985rem}
+.hero-content p{font-size:1.205rem}
+.hero-scroll-hint,.section-label{font-size:.905rem}
+.intro-card p{font-size:1.065rem}
+.btn-outline,.btn-dark{font-size:.925rem}
+#corporate>div>p,.agency-content p,#solutions>div>p{font-size:1.125rem}
+.accordion-trigger{font-size:1.125rem}
+.accordion-body{font-size:1.085rem}
+.contact-line{font-size:1.065rem}
+.hero-content h1 span{color:inherit}
+.footer-section h4{font-size:.95rem;color:#fff}
+.footer-section p{font-size:1rem;color:#fff}
+.footer-bottom{font-size:.945rem;color:rgba(255,255,255,.72)}
+
+/* Cross-platform header sizing: resilient to Windows display scaling and browser zoom */
+html{scroll-padding-top:84px}
+nav{height:auto;min-height:76px;padding-top:.55rem;padding-bottom:.55rem;overflow:visible}
+.logo{flex:0 0 auto;min-width:0}
+.logo-image{width:clamp(122px,13vw,150px);height:auto;max-height:56px}
+.nav-links{min-width:0;flex-wrap:nowrap}
+.nav-links a{display:flex;align-items:center;min-height:36px;line-height:1.25;white-space:nowrap}
+@media(max-width:900px){
+  .nav-links li:nth-child(n+4){display:list-item}
+  .nav-links li:nth-child(-n+2){display:none}
+  .nav-links{gap:.85rem}
+}
+@media(max-width:620px){
+  nav{padding-left:1rem;padding-right:1rem;min-height:70px}
+  .logo-image{width:118px}
+  .nav-links li:not(:last-child){display:none}
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+<nav>
+  <a href="index.html" class="logo">
+    <img class="logo-image" src="Color logo - no background.png" alt="Niti Advisory Services"><svg class="logo-compass" style="display:none" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="28" stroke="#1a7a6e" stroke-width="2"/>
+      <circle cx="30" cy="30" r="3" fill="#1a7a6e"/>
+      <polygon points="30,8 33,28 30,25 27,28" fill="#1a7a6e"/>
+      <polygon points="30,52 33,32 30,35 27,32" fill="#6b6b68" opacity="0.5"/>
+      <polygon points="52,30 32,27 35,30 32,33" fill="#6b6b68" opacity="0.5"/>
+      <polygon points="8,30 28,27 25,30 28,33" fill="#6b6b68" opacity="0.5"/>
+      <line x1="30" y1="4" x2="30" y2="8" stroke="#1a7a6e" stroke-width="1.5"/>
+      <line x1="30" y1="52" x2="30" y2="56" stroke="#1a7a6e" stroke-width="1.5"/>
+      <line x1="4" y1="30" x2="8" y2="30" stroke="#1a7a6e" stroke-width="1.5"/>
+      <line x1="52" y1="30" x2="56" y2="30" stroke="#1a7a6e" stroke-width="1.5"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#intro">About Us</a></li>
+    <li><a href="niti-team_2_1.html" class="page-link">Our Team</a></li>
+    <li><a href="niti-services_1.html" class="page-link">Services</a></li>
+    <li><a href="niti-contact.html" class="btn-nav page-link">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Strategy.<br>Guidance.<br>Integrity<span>.</span></h1>
+    <p>Niti Advisory Services is a boutique compliance and regulatory advisory firm founded by former regulators.</p>
+    <svg class="signature" width="120" height="40" viewBox="0 0 120 40" fill="none">
+      <path d="M10 30 C20 10,30 35,45 20 S65 8,80 22 S95 35,110 18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M10 32 L30 32" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- INTRO CARDS -->
+<section id="intro">
+  <p class="section-label">Intro</p>
+  <h2>Strategy, guidance, and sound governance — delivered by former regulators with deep DFSA expertise.</h2>
+  <div class="intro-grid">
+    <a href="#corporate" class="intro-card fade-in">
+      <div class="intro-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <h3>About Us</h3>
+      <p>A boutique compliance and regulatory advisory firm founded by former DFSA regulators, delivering strategy, guidance, and sound governance.</p>
+      <span class="btn-outline">Learn More</span>
+    </a>
+    <a href="niti-team_2_1.html" class="intro-card fade-in page-link" style="transition-delay:0.08s">
+      <div class="intro-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Our Team</h3>
+      <p>Our founders are former DFSA regulators with experience supervising funds, private banks, brokerages, advisors and investment banks.</p>
+      <span class="btn-outline">Learn More</span>
+    </a>
+    <a href="niti-services_1.html" class="intro-card fade-in page-link" style="transition-delay:0.24s">
+      <div class="intro-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h4"/></svg></div>
+      <h3>Our Services</h3>
+      <p>Licensing, NED roles, Risk Management, Outsourced Control Functions, Fund Services, AML/CFT, Internal Audit, and Training &amp; Mentoring.</p>
+      <span class="btn-outline">Learn More</span>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT NITI -->
+<section>
+  <div id="corporate">
+    <div class="fade-in">
+      <div class="about-heading"><h2>About<br>Niti<span style="color:var(--teal-light)">.</span></h2><img class="about-heading-logo" src="Color logo - no background.png" alt="Niti Advisory Services logo"></div>
+      <p>Niti Advisory Services is a boutique compliance and regulatory advisory firm founded by former regulators. Derived from Sanskrit, Niti signifies strategy, guidance and sound governance—principles that form the cornerstone of our approach to serving clients.</p>
+      <div class="accordion-item open">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">Our Background <span class="accordion-plus">+</span></button>
+        <div class="accordion-body">Our founders bring extensive regulatory and industry experience gained at the Dubai Financial Services Authority (DFSA), where they supervised a wide range of leading global and regional financial institutions. Their expertise spans diverse business models, including fund and asset management, private banking, brokerage, financial advisory, arranging and investment banking.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">Our Expertise <span class="accordion-plus">+</span></button>
+        <div class="accordion-body">Combining deep regulatory insight with practical industry experience, Niti helps clients navigate complex regulatory environments with confidence—meeting regulatory expectations while advancing their strategic business objectives.</div>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.15s">
+      <img class="corporate-img" src="WhatsApp Image 2026-09-04 at 23.28.34 (3).jpeg" alt="A maze with a clear gold path representing regulatory guidance">
+    </div>
+  </div>
+</section>
+
+<!-- OUR WORK -->
+<section>
+  <div id="solutions">
+    <div class="fade-in">
+      <h2>Our Work<span style="color:var(--teal-light)">.</span></h2>
+      <p>From licensing applications to ongoing compliance monitoring — we deliver bespoke regulatory solutions across DIFC and ADGM for funds, private banks, brokerages and advisors.</p>
+      <a href="niti-services_1.html" class="btn-outline page-link">View All Services</a>
+    </div>
+    <div class="solutions-grid fade-in" style="transition-delay:0.1s">
+      <img src="WhatsApp Image 2026-09-04 at 23.28.34 (1).jpeg" alt="A compass beside a blank card representing clear direction">
+      <img src="WhatsApp Image 2026-09-04 at 23.28.36.jpeg" alt="Interlocking blocks representing coordinated controls">
+      <img src="WhatsApp Image 2026-09-04 at 23.28.34 (2).jpeg" alt="Balanced stones representing sound governance">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-section">
+      <h4>Disclaimer</h4>
+      <p>The information contained on this website is provided for general informational purposes only and does not constitute legal, regulatory, investment, tax, accounting, or other professional advice. While Niti Advisory Services endeavours to ensure that the information presented is accurate and up to date, no representation or warranty, express or implied, is made as to its completeness, accuracy, or suitability for any particular purpose.</p>
+      <p>Visitors should not act or refrain from acting on the basis of any information contained on this website without obtaining appropriate professional advice tailored to their specific circumstances. Use of this website or communication with Niti Advisory Services through this website does not create a client relationship.</p>
+      <p>Niti Advisory Services shall not be liable for any loss or damage arising from reliance on the information contained on this website. Any regulatory views, interpretations, or opinions expressed are those of the authors and should not be construed as representing the views of any regulatory authority, past or present. All rights reserved.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Cookies</h4>
+      <p>This website does not use cookies or similar tracking technologies to collect information about visitors. We do not track browsing activity, serve targeted advertisements, or use website analytics cookies.</p>
+      <p>Should our use of cookies change in the future, this policy will be updated accordingly.</p>
+    </div>
+    <div class="footer-bottom">© 2026 <span>Niti Advisory Services.</span> — All rights reserved.</div>
+  </div>
+</footer>
+
+</div>
+<script>
+function toggleAccordion(btn){
+  const item=btn.closest('.accordion-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+function smoothExit(href){
+  document.querySelector('.page-wrapper').style.animation='pageExit 0.4s cubic-bezier(0.4,0,1,1) forwards';
+  setTimeout(()=>{window.location.href=href;},380);
+}
+document.querySelectorAll('a.page-link').forEach(link=>{
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    smoothExit(this.getAttribute('href'));
+  });
+});
+</script>
+</body>
+</html>
